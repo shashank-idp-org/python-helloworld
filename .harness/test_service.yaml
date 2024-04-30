@@ -3,3 +3,19 @@ service:
   identifier: test_service
   orgIdentifier: shashank
   projectIdentifier: shashank_idp_test
+  serviceDefinition:
+    spec:
+      release:
+        name: release-<+INFRA_KEY_SHORT_ID>
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: account.anupDockerReg
+                imagePath: abc
+                tag: <+input>
+                digest: ""
+              identifier: test
+              type: DockerRegistry
+    type: Kubernetes
